@@ -1151,38 +1151,105 @@
   .opt.selected { animation: optFlash 0.2s ease; }
 
   /* ─── MOBILE ─── */
+  /* ─── MOBILE FIRST: base is mobile, desktop is an enhancement ─── */
+
+  /* Result topbar: sticky on mobile */
+  .result-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+  }
+
   @media (max-width: 768px) {
-    .intro-hero { grid-template-columns: 1fr; }
+    /* ─── Layout ─── */
+    .intro-hero { grid-template-columns: 1fr; min-height: auto; }
     .intro-right { display: none; }
-    .intro-left { padding: 48px 28px; }
-    .intro-nav { padding: 20px 28px; }
-    .quiz-topbar { padding: 0 20px; }
-    .quiz-main { padding: 32px 20px; }
-    .q-text { font-size: 18px; }
-    .report-header { grid-template-columns: 1fr; }
-    .report-badge { display: none; }
-    .report-grid { grid-template-columns: 1fr; }
-    .report-grid-2 { grid-template-columns: 1fr; }
-    .radar-container { grid-template-columns: 1fr; gap: 24px; }
-    .insights-grid { grid-template-columns: 1fr; }
-    .celeb-card { grid-template-columns: 1fr; text-align: center; }
-    .celeb-avatar { margin: 0 auto; }
-    #report-card { padding: 32px 16px 60px; }
-    .result-topbar { padding: 14px 16px; flex-wrap: wrap; gap: 8px; }
-    .result-topbar-left { font-size: 12px; }
-    .result-actions { gap: 6px; }
-    .action-btn { padding: 8px 14px; font-size: 12px; }
-    .result-footer { padding: 20px 16px; flex-direction: column; gap: 10px; }
+    .intro-left {
+      padding: 36px 24px 48px;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .intro-nav { padding: 18px 24px; }
+
+    /* ─── Intro content ─── */
+    .intro-title { font-size: 28px; margin-bottom: 16px; }
+    .intro-body { font-size: 15px; margin-bottom: 24px; }
+    .onboard-stats { width: 100%; justify-content: space-between; }
+    .onboard-stat { padding: 14px 16px; flex: 1; }
+    .onboard-stat-num { font-size: 22px; }
+    .onboard-values { margin-bottom: 28px; }
+    .start-btn { width: 100%; justify-content: center; padding: 16px 24px; font-size: 15px; }
+
+    /* ─── Quiz ─── */
+    .quiz-topbar { padding: 0 16px; height: 52px; }
+    .quiz-main { padding: 28px 20px 40px; align-items: flex-start; padding-top: 32px; }
+    .question-wrap { max-width: 100%; }
+    .q-text { font-size: 19px; line-height: 1.4; margin-bottom: 28px; }
+    .options-list { gap: 10px; margin-bottom: 0; }
+    .opt { padding: 16px 18px; font-size: 15px; border-radius: 0; }
+
+    /* ─── Result topbar ─── */
+    .result-topbar { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }
+    .result-topbar-left { font-size: 12px; width: 100%; }
+    .result-actions { width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .action-btn { padding: 10px 8px; font-size: 12px; text-align: center; }
+
+    /* ─── Report card ─── */
+    #report-card { padding: 24px 16px 60px; }
+    .report-header { grid-template-columns: 1fr; gap: 16px; padding: 28px 20px; }
+    .report-badge { display: flex; width: fit-content; }
+    .report-talent-name { font-size: 34px; letter-spacing: -1px; }
+
+    /* ─── Info cells ─── */
+    .report-grid { grid-template-columns: 1fr; gap: 1px; }
+    .report-grid-2 { grid-template-columns: 1fr; gap: 1px; }
+    .report-cell { padding: 22px 20px; }
+
+    /* ─── Gallery ─── */
+    .gallery-section { margin-bottom: 40px; padding-bottom: 40px; }
     .gallery-grid { grid-template-columns: repeat(5, 1fr); gap: 4px; }
-    .gallery-item { padding: 10px 6px; }
-    .gallery-item-icon { width: 28px; height: 28px; font-size: 10px; margin-bottom: 6px; }
-    .gallery-item-name { font-size: 9px; margin-bottom: 4px; }
-    .gallery-item-pct { font-size: 12px; }
+    .gallery-item { padding: 10px 4px; }
+    .gallery-item-icon { width: 26px; height: 26px; font-size: 9px; margin-bottom: 5px; }
+    .gallery-item-name { font-size: 8px; margin-bottom: 3px; line-height: 1.2; }
+    .gallery-item-pct { font-size: 11px; }
     .gallery-item-label { font-size: 7px; }
-    .gallery-top-badge { font-size: 7px; padding: 2px 5px; }
+    .gallery-top-badge { font-size: 7px; padding: 2px 4px; }
+
+    /* ─── Radar ─── */
+    .radar-section { margin-bottom: 40px; padding-bottom: 40px; }
+    .radar-container { grid-template-columns: 1fr; gap: 20px; }
+    #radarCanvas { max-width: 320px; margin: 0 auto; display: block; }
+
+    /* ─── Insights ─── */
+    .insights-section { margin-bottom: 40px; padding-bottom: 40px; }
+    .insights-grid { grid-template-columns: 1fr; gap: 12px; }
+    .insight-card { padding: 22px 18px; }
+    .insight-number { font-size: 36px; top: 14px; right: 16px; }
+
+    /* ─── Celebrity ─── */
+    .celeb-section { margin-bottom: 40px; padding-bottom: 40px; }
+    .celeb-card { grid-template-columns: 1fr; gap: 20px; padding: 28px 20px; text-align: center; }
+    .celeb-avatar { margin: 0 auto; width: 72px; height: 72px; font-size: 26px; }
+
+    /* ─── Action steps ─── */
+    .action-section { margin-bottom: 40px; }
+    .action-step { grid-template-columns: 56px 1fr; gap: 16px; padding: 20px 0; }
+    .step-title { font-size: 14px; }
+    .step-body { font-size: 13px; }
+
+    /* ─── Section headers ─── */
     .section-title { font-size: 18px; }
-    .opt { padding: 14px 16px; font-size: 14px; }
-    .report-talent-name { font-size: 36px; letter-spacing: -1px; }
+    .section-header { margin-bottom: 20px; }
+
+    /* ─── Footer ─── */
+    .result-footer { padding: 20px 16px; flex-direction: column; gap: 10px; text-align: center; }
+  }
+
+  /* ─── Very small screens ─── */
+  @media (max-width: 360px) {
+    .result-actions { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(5, 1fr); gap: 2px; }
+    .gallery-item-name { font-size: 7px; }
   }
 
   /* ─── ONBOARDING STATS + VALUES ─── */
@@ -1530,183 +1597,183 @@
 
 const QUESTIONS = [
   {
-    q: "在一个陌生的新环境里，你最先注意到的是什么？",
+    q: "走进一个你从没来过的地方，你最先注意到的是什么？",
     opts: [
-      { text: "空间的色彩、比例与整体美感", dim: "aesthetic" },
-      { text: "房间里每个人的情绪状态和相互关系", dim: "empathy" },
-      { text: "哪些资源可以利用、谁掌握着关键信息", dim: "strategic" },
-      { text: "空间背后的运转逻辑和隐藏规则", dim: "logic" }
+      { text: "灯光、颜色、空间的整体感觉", dim: "aesthetic" },
+      { text: "谁跟谁关系好，谁看起来不太对劲", dim: "empathy" },
+      { text: "谁是这里真正说了算的人", dim: "strategic" },
+      { text: "这地方是怎么运转起来的", dim: "logic" }
     ]
   },
   {
-    q: "完成一份工作时，你最有成就感的瞬间是？",
+    q: "做完一件事之后，什么感觉会让你觉得「值了」？",
     opts: [
-      { text: "做出来的东西在视觉上让人眼前一亮", dim: "aesthetic" },
-      { text: "帮助了一个真正需要帮助的人", dim: "empathy" },
-      { text: "亲手把一个想法推进成了现实", dim: "execution" },
-      { text: "想通了一个之前卡住的核心问题", dim: "logic" }
+      { text: "做出来的东西看起来就是对的，有质感", dim: "aesthetic" },
+      { text: "真的帮到了某个人，感觉得到", dim: "empathy" },
+      { text: "事情从无到有地落地了", dim: "execution" },
+      { text: "想通了一个一直卡着自己的问题", dim: "logic" }
     ]
   },
   {
-    q: "朋友向你倾诉困难，你的第一反应通常是？",
+    q: "朋友跟你说遇到了很头疼的事，你通常会怎么做？",
     opts: [
-      { text: "帮 ta 重新包装叙述，换个角度看这件事", dim: "narrative" },
-      { text: "真正感受到 ta 的情绪，并给予共鸣", dim: "empathy" },
-      { text: "立刻整理出 2-3 个实际可操作的方案", dim: "execution" },
-      { text: "追问根源，帮 ta 看清问题的本质", dim: "investigative" }
+      { text: "帮他换个角度重新讲这件事，让它没那么压人", dim: "narrative" },
+      { text: "先陪他待一会儿，让他知道你真的在听", dim: "empathy" },
+      { text: "马上帮他想接下来可以怎么做", dim: "execution" },
+      { text: "把问题拆开，找到真正卡住的那个点", dim: "investigative" }
     ]
   },
   {
-    q: "你的记忆力更擅长记住哪类信息？",
+    q: "你脑子里记东西，通常记哪种类型最牢？",
     opts: [
-      { text: "画面、场景、色彩细节", dim: "aesthetic" },
-      { text: "每个人说过的话和当时的表情", dim: "empathy" },
-      { text: "事件的先后顺序与关键节点", dim: "execution" },
-      { text: "各类事物之间的内在规律和关联", dim: "logic" }
+      { text: "画面和细节，当时是什么颜色什么感觉", dim: "aesthetic" },
+      { text: "谁说了什么，说话时什么表情", dim: "empathy" },
+      { text: "事情是什么顺序发生的", dim: "execution" },
+      { text: "这件事背后的规律是什么", dim: "logic" }
     ]
   },
   {
-    q: "在一个团队项目里，你最自然承担的角色是？",
+    q: "在一个团队里，你会自然而然地做哪件事？",
     opts: [
-      { text: "把内容变得更有质感和美感", dim: "aesthetic" },
-      { text: "调和团队氛围，处理人际摩擦", dim: "empathy" },
-      { text: "推进计划落地，把事情做完", dim: "execution" },
-      { text: "提出那个所有人都没想到的问题", dim: "investigative" }
+      { text: "让输出物看起来更好，更有品质感", dim: "aesthetic" },
+      { text: "发现团队里有摩擦，帮大家把关系理顺", dim: "empathy" },
+      { text: "推着事情往前走，不让它卡在那里", dim: "execution" },
+      { text: "提出那个大家都没问过的问题", dim: "investigative" }
     ]
   },
   {
-    q: "你学习一样新东西时，通常的路径是？",
+    q: "学一个完全陌生的东西，你通常怎么开始？",
     opts: [
-      { text: "先感受整体对不对，靠直觉判断", dim: "aesthetic" },
-      { text: "先了解背后的人和故事，建立情感连接", dim: "narrative" },
-      { text: "直接上手实操，在做中学", dim: "execution" },
-      { text: "先搞清楚底层逻辑，再往上延伸", dim: "logic" }
+      { text: "先感受一下整体，看它有没有让我有感觉", dim: "aesthetic" },
+      { text: "先听几个故事或案例，找到共鸣再往下走", dim: "narrative" },
+      { text: "直接上手做，做着做着就懂了", dim: "execution" },
+      { text: "先搞清楚最底层的逻辑是什么", dim: "logic" }
     ]
   },
   {
-    q: "当你进入心流状态，时间感通常是？",
+    q: "做事特别专注的时候，你的状态通常是？",
     opts: [
-      { text: "消失——完全沉浸在创造美的过程中", dim: "aesthetic" },
-      { text: "放慢——每一次与人的连接都极清晰", dim: "empathy" },
-      { text: "加速——效率极高，停不下来", dim: "execution" },
-      { text: "静止——思维高速运转但外在极其安静", dim: "logic" }
+      { text: "完全沉进去了，感觉在和这个东西对话", dim: "aesthetic" },
+      { text: "很平静，和眼前这个人或事完全在一起", dim: "empathy" },
+      { text: "能量很高，停不下来，越做越有劲", dim: "execution" },
+      { text: "外表很安静，但脑子转得很快", dim: "logic" }
     ]
   },
   {
-    q: "你解决问题时最常用的方式是？",
+    q: "碰到一个棘手的问题，你第一步通常怎么处理？",
     opts: [
-      { text: "在脑子里整理成一幅清晰的图或画面", dim: "aesthetic" },
-      { text: "先感受各方的立场和情绪，再找平衡点", dim: "empathy" },
-      { text: "拆解成步骤，立刻开始执行第一步", dim: "execution" },
-      { text: "追溯到根本原因，从源头解决", dim: "strategic" }
+      { text: "在脑子里先画出来，看看能不能看出什么", dim: "aesthetic" },
+      { text: "先搞清楚相关的人各自怎么想、有什么顾虑", dim: "empathy" },
+      { text: "拆开来，先把能做的一步做了", dim: "execution" },
+      { text: "一直追问，直到找到最根本的原因", dim: "strategic" }
     ]
   },
   {
-    q: "你最讨厌的工作状态是什么？",
+    q: "哪种工作状态会让你觉得很难受、待不下去？",
     opts: [
-      { text: "做出来的成果没有审美，粗糙难看", dim: "aesthetic" },
-      { text: "团队氛围冷漠，缺乏真实的人际连接", dim: "empathy" },
-      { text: "只讲方向，没有行动，反复开会", dim: "execution" },
-      { text: "停留在表面，没有深度思考", dim: "investigative" }
+      { text: "做出来的东西很粗糙，根本没有用心", dim: "aesthetic" },
+      { text: "大家互相不在乎对方，感觉很冷", dim: "empathy" },
+      { text: "只开会、只讨论，没有任何东西真正动起来", dim: "execution" },
+      { text: "所有人都停在表面，没人想往深里想", dim: "investigative" }
     ]
   },
   {
-    q: "别人来找你帮忙，你最常帮的是？",
+    q: "朋友来找你帮忙，你通常会帮哪种忙？",
     opts: [
-      { text: "帮 ta 把东西设计得更好看，更有质感", dim: "aesthetic" },
-      { text: "帮 ta 理清情绪，看清自己真正想要什么", dim: "empathy" },
-      { text: "帮 ta 把事情从 0 推进到 1", dim: "execution" },
-      { text: "帮 ta 把问题想清楚，找到核心", dim: "logic" }
+      { text: "帮他把东西弄得更好看、更有感觉", dim: "aesthetic" },
+      { text: "帮他把自己的情绪整理清楚，想明白自己要什么", dim: "empathy" },
+      { text: "帮他把想法变成能真正推进的东西", dim: "execution" },
+      { text: "帮他把问题理清楚，找到真正卡在哪", dim: "logic" }
     ]
   },
   {
-    q: "你觉得世界上最稀缺的东西是什么？",
+    q: "你觉得现在最缺的东西是什么？",
     opts: [
-      { text: "美——太多丑陋和粗制滥造的东西", dim: "aesthetic" },
-      { text: "共情——太多人不懂得真正倾听", dim: "empathy" },
-      { text: "行动力——太多人停在想法里", dim: "execution" },
-      { text: "深度——太多浅层和表面的思考", dim: "investigative" }
+      { text: "认真做东西的人，太多将就和粗糙了", dim: "aesthetic" },
+      { text: "真的愿意听人说话的人，不是只等着轮到自己讲", dim: "empathy" },
+      { text: "真的去做的人，想法太多、行动太少", dim: "execution" },
+      { text: "愿意往深里想的人，太多人只停留在表面", dim: "investigative" }
     ]
   },
   {
-    q: "你在一群人里，最容易被什么吸引？",
+    q: "跟一群新认识的人在一起，你会不自觉地注意谁？",
     opts: [
-      { text: "某个人的独特风格和审美品味", dim: "aesthetic" },
-      { text: "某个人说话时流露出的真实脆弱", dim: "empathy" },
-      { text: "某个人强大的执行力和结果导向", dim: "leadership" },
-      { text: "某个人发现问题的犀利视角", dim: "investigative" }
+      { text: "穿着或品味很有自己风格的那个人", dim: "aesthetic" },
+      { text: "说话时你感觉得到他有点脆弱、有点真实的那个人", dim: "empathy" },
+      { text: "做事雷厉风行、一说就动的那个人", dim: "leadership" },
+      { text: "说话不多但每次开口都很准的那个人", dim: "investigative" }
     ]
   },
   {
-    q: "你的创意通常以哪种形式涌现？",
+    q: "你的想法或创意，通常是以什么形式冒出来的？",
     opts: [
-      { text: "一个具体的视觉画面或色彩组合", dim: "aesthetic" },
-      { text: "一个关于人的故事或比喻", dim: "narrative" },
-      { text: "一个完整的可执行计划", dim: "execution" },
-      { text: "一个打穿表象的底层洞见", dim: "logic" }
+      { text: "一个画面，一个颜色，一种质感", dim: "aesthetic" },
+      { text: "一个故事，或者一个比喻", dim: "narrative" },
+      { text: "一个可以马上去做的计划", dim: "execution" },
+      { text: "一个打穿表面的判断或洞察", dim: "logic" }
     ]
   },
   {
-    q: "你如何评价自己的情绪处理能力？",
+    q: "情绪很多或压力很大的时候，你通常会怎么处理？",
     opts: [
-      { text: "我用创作来转化情绪，美是我的出口", dim: "aesthetic" },
-      { text: "我能非常清晰地感知和命名自己的情绪", dim: "regulation" },
-      { text: "我倾向于行动来转移情绪", dim: "execution" },
-      { text: "我通过分析情绪的来源来化解它", dim: "logic" }
+      { text: "做点什么，画画、写东西、弄点东西出来", dim: "aesthetic" },
+      { text: "很清楚自己现在是什么感受，能说出来", dim: "regulation" },
+      { text: "去运动或者做事情，让自己动起来", dim: "execution" },
+      { text: "想清楚这个情绪是从哪里来的", dim: "logic" }
     ]
   },
   {
-    q: "面对一个高度模糊的新挑战，你的第一感受是？",
+    q: "遇到一个完全不知道怎么弄的新任务，你的直觉反应是？",
     opts: [
-      { text: "期待——这里面一定有美的可能性", dim: "aesthetic" },
-      { text: "好奇——想先了解背后的人和动机", dim: "empathy" },
-      { text: "跃跃欲试——有挑战才有劲", dim: "leadership" },
-      { text: "想先想清楚——模糊中一定有结构", dim: "strategic" }
+      { text: "有点期待——不知道会做出什么东西来", dim: "aesthetic" },
+      { text: "先想想这件事对谁有意义、背后是什么动机", dim: "empathy" },
+      { text: "有点兴奋，越难越想试试", dim: "leadership" },
+      { text: "先冷静一下，把结构摸清楚再动", dim: "strategic" }
     ]
   },
   {
-    q: "你最希望自己被记住的方式是？",
+    q: "如果有人记得你，你希望他们记得的是什么？",
     opts: [
-      { text: "我创造了让人久久难忘的美", dim: "aesthetic" },
-      { text: "我真正理解过一些人，让他们感到被看见", dim: "empathy" },
-      { text: "我把一件重要的事做成了", dim: "execution" },
-      { text: "我说过一些改变别人思考方式的话", dim: "narrative" }
+      { text: "他做过一些真的很美的东西", dim: "aesthetic" },
+      { text: "和他说话会让你感到被真正看见", dim: "empathy" },
+      { text: "他把一件很重要的事做成了", dim: "execution" },
+      { text: "他说过一句话让你之后一直在想", dim: "narrative" }
     ]
   },
   {
-    q: "在高压情境下，你最稳定的状态是？",
+    q: "事情乱了、大家都很焦虑的时候，你通常会？",
     opts: [
-      { text: "用细节和美感来稳住局面", dim: "aesthetic" },
-      { text: "安抚情绪，让大家感到安全", dim: "regulation" },
-      { text: "迅速做决定，把人带出混乱", dim: "leadership" },
-      { text: "快速分析找到核心变量", dim: "strategic" }
+      { text: "先把眼前的东西整理好，给空间一点秩序感", dim: "aesthetic" },
+      { text: "先稳住大家的情绪，让大家感觉没那么慌", dim: "regulation" },
+      { text: "直接说接下来先做什么，把人带出混乱", dim: "leadership" },
+      { text: "快速找到问题的核心，把精力聚焦在那里", dim: "strategic" }
     ]
   },
   {
-    q: "哪种反馈对你最有力量？",
+    q: "哪种夸奖会让你心里真的很暖？",
     opts: [
-      { text: "你做的东西太美了，我反复看了好多遍", dim: "aesthetic" },
-      { text: "和你说话让我感到被真正理解了", dim: "empathy" },
-      { text: "因为你，这件事终于成了", dim: "execution" },
-      { text: "你这句话让我重新想了很多事", dim: "narrative" }
+      { text: "你这个做得真的很美，我看了很多遍", dim: "aesthetic" },
+      { text: "跟你说话让我感觉被理解了", dim: "empathy" },
+      { text: "这件事多亏了你才成", dim: "execution" },
+      { text: "你说的那句话让我想了好久", dim: "narrative" }
     ]
   },
   {
-    q: "下班后，你最常主动做的事是？",
+    q: "下班或放假，你最容易主动去做什么？",
     opts: [
-      { text: "看展、逛市集、关注美的事物", dim: "aesthetic" },
-      { text: "深度陪伴一个人聊天", dim: "empathy" },
-      { text: "推进个人项目或副业", dim: "execution" },
-      { text: "读书、研究、探索某个新领域", dim: "investigative" }
+      { text: "去看展、逛市集、或者拍照记录美的东西", dim: "aesthetic" },
+      { text: "约一个朋友好好聊一次天", dim: "empathy" },
+      { text: "推进自己的项目或者学点新东西来用", dim: "execution" },
+      { text: "读书或者沉进去研究一个感兴趣的问题", dim: "investigative" }
     ]
   },
   {
-    q: "你认为自己真正的天赋从未被充分激活，是因为？",
+    q: "你觉得自己被低估，最可能是因为什么？",
     opts: [
-      { text: "周围人不重视创意和审美这件事", dim: "aesthetic" },
-      { text: "情感智力在大多数环境里被低估", dim: "empathy" },
-      { text: "我总是帮别人做事，没有为自己的事拼过", dim: "execution" },
-      { text: "深度思考的空间太少，所有人都在赶", dim: "investigative" }
+      { text: "周围人不太在乎审美这件事，觉得差不多就行", dim: "aesthetic" },
+      { text: "懂人的能力很少被认真当成一种本事", dim: "empathy" },
+      { text: "我花了太多时间帮别人，没怎么为自己的事认真拼过", dim: "execution" },
+      { text: "大家都太赶了，没有空间让我认真想一件事", dim: "investigative" }
     ]
   }
 ];
@@ -1731,9 +1798,9 @@ const TALENTS = {
       { title: "与执行型人才搭档", body: "你最大的成长加速器，是找到一个能把你的审美理念推进落地的执行伙伴。单独工作的你很好，但合适的搭档会让你的作品走得更远。" }
     ],
     actions: [
-      { horizon: "本周", title: "建立你的审美档案", body: "花 30 分钟，整理 20 张让你觉得对的图片、作品、空间，找到其中的共同特征，尝试用 3 个词总结你的审美核心。" },
-      { horizon: "本月", title: "完成一件有质感的作品", body: "用你的审美力创作一样东西：一组照片、一篇文章、一个产品概念。不要等到准备好，先把它做出来，感受反馈。" },
-      { horizon: "未来", title: "让审美力成为你的竞争壁垒", body: "把你的审美敏感度转化为可持续的价值创造——无论是创业、副业还是职业转型，都以\审美\作为你的核心差异化能力。" }
+      { horizon: "本周", title: "给你的审美感知找个出口", body: "选一件你最近觉得「不对」的东西——一个设计、一个界面、一个空间——写下来：哪里不对，怎么改会更好。不是为了批评，是为了让你知道自己的判断有多准。" },
+      { horizon: "本月", title: "做一件真正有你风格的东西", body: "不管是一组照片、一段文字、一个产品提案还是一次空间布置，做出来，让别人看见你的审美。你最怕的是「还没准备好」——但审美天赋只有在输出中才会真正被激活。" },
+      { horizon: "未来", title: "把品味变成别人付钱的东西", body: "审美造物型的人最大的浪费是把这种能力当成「个人喜好」。它是稀缺的专业能力。找一个方向——品牌、内容、空间、产品——系统化地把你的审美标准变成可输出的服务或作品。" }
     ]
   },
   empathy: {
@@ -1755,9 +1822,9 @@ const TALENTS = {
       { title: "寻找需要\"人味\"的角色", body: "在 AI 快速替代标准化工作的当下，你的天赋核心——真实的人心连接——是最不可替代的能力。主动去找那些需要这种能力的位置。" }
     ],
     actions: [
-      { horizon: "本周", title: "记录一次深度倾听", body: "这周找一个人进行一次不给建议、只是真正倾听的对话。结束后写下你感受到的、但对方没有说出口的内容。" },
-      { horizon: "本月", title: "学习一套结构化共情工具", body: "了解非暴力沟通（NVC）或积极心理学的基础框架，给你的直觉一个可复用的方法论。" },
-      { horizon: "未来", title: "让人心理解力成为你的事业核心", body: "无论你做什么，把\真正理解人\作为你的核心价值主张。这个时代最需要的不是更多信息，而是真实的理解与连接。" }
+      { horizon: "本周", title: "练习「感受但不消融」", body: "这周找一次你替别人担心或承接了对方情绪的时刻，停下来问自己：我现在的感受，有多少是我自己的，有多少是对方的？开始区分这两件事。人心共鸣型的核心成长课题是：全身投入，但不失去自己。" },
+      { horizon: "本月", title: "把你对人的洞察写出来", body: "你对人心的观察比大多数人敏锐得多，但这种能力通常只活在你脑子里。这个月，找几个你真实观察到的「人心瞬间」写下来——不用多，3~5 个就够。写出来之后你会发现：这是任何 AI 都无法替代的内容。" },
+      { horizon: "未来", title: "找到一个让你的共情力发光的位置", body: "用户研究、心理咨询、品牌策略、教练——这些角色有一个共同点：最核心的能力不是技术，而是真正懂人。你不需要成为最懂技术的那个人，你需要成为那个最懂人的人。" }
     ]
   },
   execution: {
@@ -1779,9 +1846,9 @@ const TALENTS = {
       { title: "在速度和深度之间找节奏", body: "你的快是优势，但偶尔慢下来做一件需要深度积累的事——写一本书、做一个完整项目——会让你的执行力有一个\标志性代表作\。" }
     ],
     actions: [
-      { horizon: "本周", title: "完成一件被搁置的事", body: "找一件你拖着没做的事，今天把它完成。不追求完美，追求完成。完成之后记录下这种感觉——那是你天赋本来的状态。" },
-      { horizon: "本月", title: "用 OKR 框架规划你的核心目标", body: "把你的执行力导向一个真正重要的目标。用 OKR（目标与关键结果）框架，把大目标拆解成本月必须完成的三件事。" },
-      { horizon: "未来", title: "成为一个能推动组织前进的关键人物", body: "执行力天赋的终极形态，是成为让团队和组织真正动起来的那个人——不是职位，而是你天然发挥的角色。" }
+      { horizon: "本周", title: "把「最重要的那件事」真正做掉", body: "你的执行力最容易被「帮别人的事」消耗掉。这周，先把你自己最想推进的那件事列出来，哪怕只给它留出 2 小时——驱动落地型的人一旦开始，很少停不下来。" },
+      { horizon: "本月", title: "建立你的「已做到」清单", body: "你可能习惯了做完就向前冲，很少回头看。这个月，把你做成的事情列出来，哪怕是小事。你需要看见自己的执行力有多真实——这不是自夸，是校准你对自己能力的认知。" },
+      { horizon: "未来", title: "让你的执行力产生杠杆效应", body: "驱动落地型最大的天花板不是执行力不够，而是只有自己能执行。把你做事的方式系统化：怎么拆解目标、怎么推进卡住的事、怎么带着别人一起动——这套方法可以复制，你的影响力才能真正放大。" }
     ]
   },
   strategic: {
@@ -1803,9 +1870,9 @@ const TALENTS = {
       { title: "学会用数据验证直觉", body: "你的战略判断往往是对的，但加上数据支撑，它就能从\我的想法\变成\有据可查的洞见\，让你的影响力成倍放大。" }
     ],
     actions: [
-      { horizon: "本周", title: "写一份你对某个领域的判断", body: "选一个你关注的行业或话题，花 1 小时写下你的判断：现在在哪、会去哪、为什么。不求正确，求逻辑自洽。" },
-      { horizon: "本月", title: "做一次完整的战略分析练习", body: "选一家你感兴趣的公司或项目，用波特五力或 SWOT 之外的框架（比如你自己的）做一次深度分析，练习你的结构化输出能力。" },
-      { horizon: "未来", title: "成为组织里的战略参谋", body: "战略天赋的终极价值，是成为那个让决策者愿意在做重大判断前先问你的人——不是因为职位，而是因为你看得确实更远。" }
+      { horizon: "本周", title: "把脑子里那个判断写下来", body: "战略洞见型的人脑子里经常有一个「大家都没看到但我觉得很重要」的判断。这周，把它写出来。不是发出去，只是写出来——你会发现它比你以为的更清晰，也更有价值。" },
+      { horizon: "本月", title: "给自己的判断建立一个「验证系统」", body: "你的洞察往往是对的，但很少被检验。这个月，选 3 个你之前做过的判断，回头看看对了几个、哪里偏了。战略洞见型需要的不是更多思考，而是把思考和现实接上——这会让你的判断越来越准。" },
+      { horizon: "未来", title: "找到一个让你的洞见真正发挥作用的位置", body: "战略天赋在「执行层」会被浪费，在「决策层」才会发光。不是说要做老板，而是要找到一个你的判断能影响方向的角色——无论是创业、咨询、投资还是组织内的战略参谋，那是你真正的位置。" }
     ]
   },
   narrative: {
@@ -1827,9 +1894,9 @@ const TALENTS = {
       { title: "把叙事力用于个人品牌建立", body: "你最大的未开发资产，是你自己的故事。用叙事力重新构建你的个人叙事——不是简历，而是一个让人想跟随你的故事。" }
     ],
     actions: [
-      { horizon: "本周", title: "重新讲一个你熟悉的事情", body: "找一个你觉得\讲不清楚\的事（项目、经历、观点），用故事的方式重新讲一遍：主人公是谁，遇到什么困难，如何转变。" },
-      { horizon: "本月", title: "完成一篇真实有力量的写作", body: "不追求技巧，追求真实。写一件你真正相信的事，让一个人读完之后感受到你想传递的情感——这是叙事天赋最基本的验证。" },
-      { horizon: "未来", title: "让叙事力成为你最强的影响力工具", body: "演讲、内容、品牌、教育——任何你投入的领域，都把\用故事影响人\作为你的核心方法。这是你最难被取代的能力。" }
+      { horizon: "本周", title: "把一件枯燥的事重新讲一遍", body: "找一件你觉得「说不清楚」或者「别人不感兴趣」的事，试着重新讲它：谁是主角，遇到了什么，怎么变了。叙事感召型的人往往不缺故事，缺的是相信自己的故事值得被听见。" },
+      { horizon: "本月", title: "写一篇只给一个人看的东西", body: "不是发布，不是表演，就是写给某一个人——一个你想影响的人、一个你想感谢的人、或者一个你想让他理解某件事的人。叙事力在「具体的人」面前才会真正磨砺出来。" },
+      { horizon: "未来", title: "让你的声音成为你最重要的资产", body: "叙事感召型最容易犯的错误是把这种能力藏起来。你的表达方式、你讲故事的角度、你让人「感受到」的能力——这些在品牌、内容、演讲、教育里都极度稀缺。找一个方向，持续输出，让更多人听见你的声音。" }
     ]
   },
   logic: {
@@ -1851,9 +1918,9 @@ const TALENTS = {
       { title: "找到需要深度思考的问题", body: "你的天赋在简单问题上是浪费的。主动寻找那些复杂、混沌、没有标准答案的问题——你在那里才能真正发光。" }
     ],
     actions: [
-      { horizon: "本周", title: "做一次彻底的第一性原理拆解", body: "选一个你认为\已经了解\的事情，用第一性原理从零开始重新推导一遍。你会发现你之前以为的很多\常识\，其实是假设。" },
-      { horizon: "本月", title: "写一篇反常识的深度分析", body: "找一个大多数人持有的普遍观点，用你的底层逻辑去质疑它，写一篇有理有据的反驳——不是为了对抗，而是为了找到真正的答案。" },
-      { horizon: "未来", title: "成为某个领域最深度的思考者", body: "逻辑解构天赋的终极形态，是成为某个复杂领域里那个\他说的话，大家都会停下来认真想一想\的人。" }
+      { horizon: "本周", title: "找一个「别人都接受，但你觉得不对」的假设", body: "底层解构型最大的问题不是缺乏洞察，而是洞察停留在脑子里没有出口。这周，把一个你一直觉得「不对但说不清楚」的假设写下来，推导一遍：为什么不对，正确的应该是什么。" },
+      { horizon: "本月", title: "把你的一个核心判断变成别人能理解的东西", body: "你最难被外界看见的原因，通常不是你判断有误，而是你跳过了「让别人跟上来」的步骤。这个月，选一个你非常确定的洞察，试着用对方能感受到的语言讲出来——这是底层解构型最重要的成长练习。" },
+      { horizon: "未来", title: "找到一个让你的深度思维发光的场域", body: "底层解构型在需要「快速反应、表面效率」的环境里会很痛苦。你需要的是一个复杂问题真正被重视的地方——战略咨询、产品架构、学术研究、投资判断。找到那个场域，你就找到了真正的位置。" }
     ]
   },
   investigative: {
@@ -1875,9 +1942,9 @@ const TALENTS = {
       { title: "学会从探索到输出的完整路径", body: "你擅长找问题，需要刻意练习的是：给出一个阶段性的、有用的答案。不是等到研究彻底完成，而是边探索边输出。" }
     ],
     actions: [
-      { horizon: "本周", title: "选定你的一个核心探索课题", body: "花 20 分钟，写下你最近三个月里最让你着迷的 5 个问题。从中选出一个，作为你接下来 3 个月的主线课题。" },
-      { horizon: "本月", title: "做一次真正的一手研究", body: "不是搜索，而是第一手：采访一个相关的人，亲身走访一个相关的地方，或者直接做一个小型实验。感受第一手信息和二手信息的差异。" },
-      { horizon: "未来", title: "成为你探索领域里的权威发现者", body: "深度探索天赋的终极形态，是成为那个\关于 X 话题，要看 Ta 的\的人——不是因为你记忆力好，而是因为你问了最好的问题。" }
+      { horizon: "本周", title: "选定一个你真正想追到底的问题", body: "深度探索型最容易被好奇心拉散。这周，写下最近让你最着迷的 5 个问题，然后选出 1 个——那个你如果不搞清楚会一直心痒的那个——作为接下来你认真追的主线。" },
+      { horizon: "本月", title: "做一次真正的一手探索", body: "不是搜索，是第一手。采访一个人，去一个地方，做一个小实验。你会发现一手信息和二手信息之间的差距，比你想象得大得多——而这种差距，就是你的优势来源。" },
+      { horizon: "未来", title: "让你的追问能力成为一种职业资产", body: "深度探索型在「需要快速收结论」的环境里会很受限。你需要的是一个真正重视发现问题的场域——新闻、研究、咨询、产品发现、投资尽调。在那里，你问的每一个别人没问过的问题，都可能是下一个重要项目的起点。" }
     ]
   },
   leadership: {
@@ -1899,9 +1966,9 @@ const TALENTS = {
       { title: "学会建立而不只是依靠自己", body: "最终的领导力，是让你离开之后，事情依然运转。从现在起，把你的时间投入在培养下一个能做你这件事的人上。" }
     ],
     actions: [
-      { horizon: "本周", title: "主动承担一件没人负责的事", body: "这周，找一件\理应有人做但没人做\的事，站出来说：我来负责这件事。感受承担责任的感觉，这是你天赋最原始的触发点。" },
-      { horizon: "本月", title: "领导一个小项目从头到尾", body: "不需要大项目。找一件需要协调多人的小事，完整地负责它：从发起、推进到复盘。你会从中得到关于你领导方式的第一手数据。" },
-      { horizon: "未来", title: "建立一个真正需要你的组织或团队", body: "领导直觉天赋的终极形态，是建立一个因为你存在而比没有你时更好的组织——无论是公司、团队还是社区。" }
+      { horizon: "本周", title: "主动站出来，接下一件没人管的事", body: "领导直觉型的天赋只有在「真实负责」的情境里才会被激活。这周，找一件没人主动负责的小事，说一句：这件事我来。不需要头衔，不需要授权——那种自然站出来的感觉，就是你的天赋在启动。" },
+      { horizon: "本月", title: "复盘一次你带领别人做事的经历", body: "回想一次你曾经带着别人完成某件事的经历——不一定是工作，可以是任何场景。写下来：你做了什么让它往前走？大家为什么愿意跟？哪个决策是你的？这个复盘会让你更清楚自己的领导风格是什么。" },
+      { horizon: "未来", title: "找到一个真正需要你的舞台", body: "领导直觉在稳定、规则清晰的环境里会被压制，在混乱、模糊、需要有人站出来的时候才会发光。主动寻找那种环境——初创团队、新项目、转型期的组织——因为那是你真正的主场。" }
     ]
   },
   regulation: {
@@ -1923,9 +1990,9 @@ const TALENTS = {
       { title: "允许自己真实地感受情绪", body: "调控不等于压制。你的天赋是管理情绪，不是消灭它。确保你有安全的空间去真实地感受和表达情绪，这会让你的调控力更加持久。" }
     ],
     actions: [
-      { horizon: "本周", title: "写下你的情绪调控来源", body: "花 15 分钟，写下：在最近一次高压情境中，你是如何让自己保持稳定的？把这个过程具体化——那是你天赋的工作方式。" },
-      { horizon: "本月", title: "主动承担一个高压协调角色", body: "找一个大家都在回避的高压协调工作，主动接下来。不是为了证明自己，而是给你的天赋一个真实的练习场。" },
-      { horizon: "未来", title: "成为高压环境里的稳定核心", body: "情绪调控天赋的终极形态，是成为那个\只要 Ta 在，大家都会觉得能撑过去\的人——这是最难被复制的人格资产。" }
+      { horizon: "本周", title: "搞清楚你的稳定是怎么来的", body: "情绪调控型往往不太知道自己为什么稳定，只是「就这样」。这周，回想一次你保持住了但周围人都乱了的场景，写下来：你当时做了什么，想了什么，为什么没有被带跑。把这个过程具体化——那是你天赋的原材料。" },
+      { horizon: "本月", title: "主动进入一个高压场景", body: "你的天赋在低压环境里是隐形的。这个月，主动接下一个大家都在回避的高压协调任务——不是为了证明什么，而是让你的天赋真正被激活一次。你会从中发现：你的稳定不是压制情绪，而是真的清醒。" },
+      { horizon: "未来", title: "把你的稳定性变成别人可以依靠的东西", body: "情绪调控型最大的未开发价值是：你的稳定可以成为别人的安全感来源，但大多数人没有主动把它变成专业资产。危机管理、高管教练、心理咨询、谈判——这些角色最核心的能力，就是你已经有的那个东西。" }
     ]
   },
   synthesis: {
@@ -1947,9 +2014,9 @@ const TALENTS = {
       { title: "找到需要跨界方案的问题", body: "你的天赋在单一领域内是浪费的。主动去找那些\用本领域方法解决不了\的问题——你在那里才是最有价值的思考者。" }
     ],
     actions: [
-      { horizon: "本周", title: "找到一个跨界连接", body: "这周，找一件你最近遇到的问题，然后问：在完全不同的领域里，有没有人已经解决了类似的问题？试着借用那个解法。" },
-      { horizon: "本月", title: "深入学习一个你完全陌生的领域", body: "选一个你完全不了解的学科——可以是人类学、材料科学、爵士乐理论——花一个月学到\够用\的程度，感受新连接涌现的感觉。" },
-      { horizon: "未来", title: "打造你的跨界融合代表作", body: "跨界融合天赋的终极形态，是做出一件让人说\这种连接只有你能想到\的作品或方案——那是你最不可替代的贡献。" }
+      { horizon: "本周", title: "把你脑子里的一个跨界连接写出来", body: "跨界融合型最真实的天赋体现，不是「知识广」，而是「看见连接」。这周，找一个你曾经觉得「这两件事居然是一回事」的瞬间，把它写出来。它是什么，来自哪两个领域，为什么你觉得它们相关？把这个习惯保持下去。" },
+      { horizon: "本月", title: "主动去一个你完全不熟悉的领域里待一下", body: "你的天赋需要广度的滋养。这个月，认真学一个和你现在做的事完全不搭的东西——不是为了转行，是为了让你的大脑有新材料可以连接。人类学、爵士乐理论、材料科学——越陌生越好，因为连接往往就发生在陌生处。" },
+      { horizon: "未来", title: "找一个让跨界连接真正有价值的主场", body: "跨界融合型最容易犯的错是「什么都会一点」却没有一个让人记住你的核心。给自己选一个主场——它不是限制你，而是给你的跨界连接一个落脚的地方。达·芬奇的主场是艺术，但他的跨界让艺术变得无与伦比。你的呢？" }
     ]
   }
 };
@@ -1969,6 +2036,16 @@ const DIM_NAMES = {
 };
 
 const DIM_ORDER = ["aesthetic","empathy","execution","strategic","narrative","logic","investigative","leadership","regulation","synthesis"];
+
+// 6 radar axes — each maps to combined score from constituent dims
+const RADAR6_AXES = [
+  { key: "创造力", dims: ["aesthetic"], label: "创造" },
+  { key: "共情力", dims: ["empathy", "regulation"], label: "共情" },
+  { key: "行动力", dims: ["execution", "leadership"], label: "行动" },
+  { key: "思维力", dims: ["strategic", "logic"], label: "思维" },
+  { key: "洞察力", dims: ["narrative", "investigative"], label: "洞察" },
+  { key: "融合力", dims: ["synthesis"], label: "融合" }
+];
 
 // ═══════════════════ STATE ═══════════════════
 let currentQ = 0;
@@ -2260,23 +2337,32 @@ function buildGallery(topDim) {
 
 // ═══════════════════ RADAR ═══════════════════
 function buildRadarScores(topDim) {
-  // Each dimension: base shaped by talent profile + actual score signal + controlled noise
-  const base = TALENTS[topDim].radarBase; // 0-100 per dim
-  const result = {};
-  const noise = () => (Math.random() - 0.5) * 14; // ±7 jitter
+  // Build 6-axis radar from 10 underlying dimension scores
+  const base = TALENTS[topDim].radarBase;
+  const noise = () => (Math.random() - 0.5) * 10;
 
+  // First compute 10-dim raw scores
+  const dimScores = {};
   DIM_ORDER.forEach((d, i) => {
-    const actualSignal = (scores[d] / QUESTIONS.length) * 45; // 0-45 from real answers
-    const baseContrib = base[i] * 0.55;                        // 0-52.25 from profile
-    const raw = baseContrib + actualSignal + noise();
-    // Clamp: top dim 68-88, others 25-75
-    if (d === topDim) {
-      result[d] = Math.round(Math.min(88, Math.max(68, raw)));
-    } else {
-      result[d] = Math.round(Math.min(74, Math.max(22, raw)));
-    }
+    const actualSignal = (scores[d] / QUESTIONS.length) * 40;
+    const baseContrib = base[i] * 0.55;
+    dimScores[d] = Math.round(Math.min(92, Math.max(18, baseContrib + actualSignal + noise())));
   });
-  return result;
+
+  // Boost the top dim to stand out
+  dimScores[topDim] = Math.round(Math.min(92, Math.max(72, dimScores[topDim])));
+
+  // Aggregate into 6 axes
+  const result6 = {};
+  RADAR6_AXES.forEach(axis => {
+    const vals = axis.dims.map(d => dimScores[d]);
+    const avg = vals.reduce((s, v) => s + v, 0) / vals.length;
+    // Axes containing the top dim get a mild boost
+    const containsTop = axis.dims.includes(topDim);
+    result6[axis.label] = Math.round(Math.min(95, containsTop ? avg * 1.08 : avg));
+  });
+
+  return result6;
 }
 
 function drawRadar(radarScores) {
@@ -2286,15 +2372,14 @@ function drawRadar(radarScores) {
   // Use actual pixel size (840x840) for sharp rendering
   const W = canvas.width;  // 840
   const H = canvas.height; // 840
-  const dpr = window.devicePixelRatio || 1;
 
   ctx.clearRect(0, 0, W, H);
 
   const cx = W / 2, cy = H / 2;
   const R = Math.min(W, H) * 0.36;
-  const n = DIM_ORDER.length;
-  const labels = DIM_ORDER.map(d => DIM_NAMES[d]);
-  const vals = DIM_ORDER.map(d => radarScores[d] / 100);
+  const n = RADAR6_AXES.length; // 6 axes
+  const labels = RADAR6_AXES.map(a => a.label);
+  const vals = RADAR6_AXES.map(a => (radarScores[a.label] || 0) / 100);
 
   // Scale everything by 2 since canvas is 840 but CSS shows at 420
   const scale = 2;
@@ -2385,12 +2470,12 @@ function drawRadar(radarScores) {
 function buildLegend(radarScores) {
   const legend = document.getElementById('radarLegend');
   legend.innerHTML = '';
-  const sorted = [...DIM_ORDER].sort((a, b) => radarScores[b] - radarScores[a]);
-  sorted.forEach(d => {
-    const v = radarScores[d];
+  const sorted = [...RADAR6_AXES].sort((a, b) => (radarScores[b.label]||0) - (radarScores[a.label]||0));
+  sorted.forEach(axis => {
+    const v = radarScores[axis.label] || 0;
     legend.innerHTML += `<div class="legend-item">
       <div class="legend-bar-wrap">
-        <div class="legend-name">${DIM_NAMES[d]}</div>
+        <div class="legend-name">${axis.label}</div>
         <div class="legend-bar-bg">
           <div class="legend-bar-fill" data-target="${v}%" style="width:0%"></div>
         </div>
